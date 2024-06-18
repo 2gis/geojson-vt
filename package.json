@@ -1,6 +1,6 @@
 {
   "name": "@2gis/geojson-vt",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "Slice GeoJSON data into vector tiles efficiently",
   "homepage": "https://github.com/2gis/geojson-vt",
   "keywords": [
@@ -42,7 +42,7 @@
     "build": "rollup -c",
     "watch": "rollup -cw",
     "prepublishOnly": "npm run test && npm run build",
-    "pub": "npm run build && npm publish"
+    "pub": "npm run build && npm publish --verbose"
   },
   "files": [
     "geojson-vt.js",
