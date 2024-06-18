@@ -42,7 +42,7 @@
     "build": "rollup -c",
     "watch": "rollup -cw",
     "prepublishOnly": "npm run test && npm run build",
-    "pub": "npm run build && npm publish --verbose"
+    "pub": "npm run build && npm publish"
   },
   "files": [
     "geojson-vt.js",
