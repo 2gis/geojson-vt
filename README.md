@@ -92,32 +92,18 @@ Or use a browser build directly:
 <script src="https://unpkg.com/@2gis/geojson-vt@3.4.1/geojson-vt.js"></script>
 ```
 
-### Release notes
+### Publishing new version
 
-- 3.4.1
+Deploy and publishing should be made on local developer machine.
 
-  - minor type fixes
+1. Ensure all deploying features are merged to `main` branch.
+2. Switch to branch `main` and type `npm version patch | minor | major`
+3. Type `npm run pub` to build and publish new package version to npm.
+4. Do not forget to push back changes made by `npm version` command (new version commit and tag).
 
-- 3.4.0
+### What's new in this fork?
 
-  - added option `cuts` to save flag "original geometry cutted at this point by clip operation" per vertex
-
-- 3.3.0
-
-  - code refactored to support additional data per vertex
-  - added option `dimensions` to define number of dimensions per vertex
-  - added test cases for 3-dimensional data
-
-- 3.2.3
-
-  - added minor type defintions changes
-
-- 3.2.2
-
-  - added typescript support
-  - added option `generateIndex` to generate and save feature index in tile feature
-  - added and updated test cases
-
-- 3.2.1
-
-  - forked from original
+- TypeScript support.
+- Option `dimensions` allows processing additional data per vertex (e.g., third coordinate for elevation).
+- Option `cuts` enables marking vertices where original geometry was clipped.
+- Option `generateIndex` enables generating and saving features indexes in tile features.
