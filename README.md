@@ -10,7 +10,7 @@ on the browser side (without a server).
 Originally created to power GeoJSON in [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js),
 was forked to meet special requirements of [2GIS MapGL JS API](https://docs.2gis.com/en/mapgl/overview).
 
-Resulting tiles conform to the JSON equivalent 
+Resulting tiles conform to the JSON equivalent
 of the [vector tile specification](https://github.com/mapbox/vector-tile-spec/).
 To make data rendering and interaction fast, the tiles are simplified,
 retaining the minimum level of detail appropriate for each zoom level
@@ -52,19 +52,19 @@ although the defaults are sensible and work well for most use cases.
 
 ```js
 var tileIndex = geojsonvt(data, {
-  maxZoom: 14, // max zoom to preserve detail on; can't be higher than 24
-  tolerance: 3, // simplification tolerance (higher means simpler)
-  extent: 4096, // tile extent (both width and height)
-  buffer: 64, // tile buffer on each side
-  debug: 0, // logging level (0 to disable, 1 or 2)
-  lineMetrics: false, // whether to enable line metrics tracking for LineString/MultiLineString features
-  promoteId: null, // name of a feature property to promote to feature.id. Cannot be used with `generateId`
-  generateId: false, // whether to generate feature ids. Cannot be used with `promoteId`
-  generateIndex: false, // whether to generate feature indexes
-  indexMaxZoom: 5, // max zoom in the initial tile index
-  indexMaxPoints: 100000, // max number of points per tile in the index
-  dimensions: 2, // number of coordinates per vertex in the input array (2 by default)
-  cuts: false, // whether to generate cuts in last component of polygon and line points (false by default)
+	maxZoom: 14, // max zoom to preserve detail on; can't be higher than 24
+	tolerance: 3, // simplification tolerance (higher means simpler)
+	extent: 4096, // tile extent (both width and height)
+	buffer: 64, // tile buffer on each side
+	debug: 0, // logging level (0 to disable, 1 or 2)
+	lineMetrics: false, // whether to enable line metrics tracking for LineString/MultiLineString features
+	promoteId: null, // name of a feature property to promote to feature.id. Cannot be used with `generateId`
+	generateId: false, // whether to generate feature ids. Cannot be used with `promoteId`
+	generateIndex: false, // whether to generate feature indexes
+	indexMaxZoom: 5, // max zoom in the initial tile index
+	indexMaxPoints: 100000, // max number of points per tile in the index
+	dimensions: 2, // number of coordinates per vertex in the input array (2 by default)
+	cuts: false, // whether to generate cuts in last component of polygon and line points (false by default)
 });
 ```
 
@@ -86,18 +86,27 @@ import geojsonvt from "@2gis/geojson-vt";
 const geojsonvt = require("@2gis/geojson-vt");
 ```
 
+Or use a browser build directly:
+
+```html
+<script src="https://unpkg.com/@2gis/geojson-vt@3.4.1/geojson-vt.js"></script>
+```
+
 ### Release notes
+
+- 3.4.1
+
+  - minor type fixes
 
 - 3.4.0
 
   - added option `cuts` to save flag "original geometry cutted at this point by clip operation" per vertex
-  - minor type fixes
 
 - 3.3.0
 
   - code refactored to support additional data per vertex
   - added option `dimensions` to define number of dimensions per vertex
-  - added test cases for 3-dimensions data
+  - added test cases for 3-dimensional data
 
 - 3.2.3
 
