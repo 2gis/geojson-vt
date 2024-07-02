@@ -99,7 +99,7 @@ Deploy and publishing should be made on local developer machine.
 1. Ensure all deploying features are merged to `main` branch.
 2. Switch to branch `main` and type `npm version patch | minor | major`
 3. Type `npm run pub` to build and publish new package version to npm.
-4. Do not forget to push back changes made by `npm version` command (new version commit and tag).
+4. Do not forget to push changes in local `main` made by `npm version` command (new version commit and tag) to remote.
 
 ### What's new in this fork?
 
