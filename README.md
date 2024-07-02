@@ -10,8 +10,7 @@ on the browser side (without a server).
 Originally created to power GeoJSON in [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js),
 was forked to meet special requirements of [2GIS MapGL JS API](https://docs.2gis.com/en/mapgl/overview).
 
-    Resulting tiles conform to the JSON equivalent
-
+Resulting tiles conform to the JSON equivalent 
 of the [vector tile specification](https://github.com/mapbox/vector-tile-spec/).
 To make data rendering and interaction fast, the tiles are simplified,
 retaining the minimum level of detail appropriate for each zoom level
