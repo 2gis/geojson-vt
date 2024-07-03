@@ -1,15 +1,14 @@
-## geojson-vt &mdash; GeoJSON Vector Tiles
+# 2GIS GeoJSON Vector Tiles [![npm][npm-badge]][npm-link]
 
-[![Build Status](https://travis-ci.org/mapbox/geojson-vt.svg?branch=main)](https://travis-ci.org/mapbox/geojson-vt)
+[npm-badge]: https://img.shields.io/npm/v/2gis-maps.svg
+[npm-link]: https://www.npmjs.com/package/2gis-maps
 
 A highly efficient JavaScript library for **slicing GeoJSON data into vector tiles on the fly**,
 primarily designed to enable rendering and interacting with large geospatial datasets
 on the browser side (without a server).
 
-Created to power GeoJSON in [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js),
-but can be useful in other visualization platforms
-like [Leaflet](https://github.com/Leaflet/Leaflet), [OpenLayers](https://openlayers.org/) and [d3](https://github.com/mbostock/d3),
-as well as Node.js server applications.
+Originally created to power GeoJSON in [Mapbox GL JS](https://github.com/mapbox/mapbox-gl-js),
+was forked to meet special requirements of [2GIS MapGL JS API](https://docs.2gis.com/en/mapgl/overview).
 
 Resulting tiles conform to the JSON equivalent
 of the [vector tile specification](https://github.com/mapbox/vector-tile-spec/).
@@ -61,9 +60,11 @@ var tileIndex = geojsonvt(data, {
     lineMetrics: false, // whether to enable line metrics tracking for LineString/MultiLineString features
     promoteId: null, // name of a feature property to promote to feature.id. Cannot be used with `generateId`
     generateId: false, // whether to generate feature ids. Cannot be used with `promoteId`
+    generateIndex: false, // whether to generate feature indexes
     indexMaxZoom: 5, // max zoom in the initial tile index
     indexMaxPoints: 100000, // max number of points per tile in the index
     dimensions: 2, // number of coordinates per vertex in the input array (2 by default)
+    cuts: false, // whether to generate cuts in last component of polygon and line points (false by default)
 });
 ```
 
@@ -75,18 +76,34 @@ GeoJSON-VT only operates on zoom levels up to 24.
 
 ### Install
 
-Install using NPM (`npm install geojson-vt`) or Yarn (`yarn add geojson-vt`), then:
+Install using NPM (`npm install @2gis/geojson-vt`) or Yarn (`yarn add @2gis/geojson-vt`), then:
 
 ```js
 // import as a ES module
-import geojsonvt from "geojson-vt";
+import geojsonvt from "@2gis/geojson-vt";
 
 // or require in Node / Browserify
-const geojsonvt = require("geojson-vt");
+const geojsonvt = require("@2gis/geojson-vt");
 ```
 
 Or use a browser build directly:
 
 ```html
-<script src="https://unpkg.com/geojson-vt@3.2.0/geojson-vt.js"></script>
+<script src="https://unpkg.com/@2gis/geojson-vt@3.4.1/geojson-vt.js"></script>
 ```
+
+### Publishing new version
+
+Deploy and publishing should be made on local developer machine.
+
+1. Ensure all deploying features are merged to `main` branch.
+2. Switch to branch `main` and type `npm version patch | minor | major`
+3. Type `npm run pub` to build and publish new package version to npm.
+4. Do not forget to push changes in local `main` made by `npm version` command (new version commit and tag) to remote.
+
+### What's new in this fork?
+
+- TypeScript support.
+- Option `dimensions` allows processing additional data per vertex (e.g., third coordinate for elevation).
+- Option `cuts` enables marking vertices where original geometry was clipped.
+- Option `generateIndex` enables generating and saving features indexes in tile features.
